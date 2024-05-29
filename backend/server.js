@@ -6,7 +6,11 @@ app.use(express.json());
 
 // declare task name 
 const taskRoutes=require('./routes/taskRoute');
+
+const AdministrativeOfficerRoutes=require('./routes/AdministrativeOfficerRoute');
+
 const LocationRoute=require('./routes/LocationRoute');
+
 
 
 // app.get("/",(req, res) => {
@@ -35,4 +39,8 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
 
 // connect route 
 app.use("/api/tasks",taskRoutes);
+
+app.use("/api/AdministrativeOfficer",AdministrativeOfficerRoutes);
+
 app.use("/api/location",LocationRoute);
+
