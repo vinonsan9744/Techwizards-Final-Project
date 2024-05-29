@@ -11,6 +11,9 @@ const AdministrativeOfficerRoutes=require('./routes/AdministrativeOfficerRoute')
 
 const LocationRoute=require('./routes/LocationRoute');
 
+const HazardRoute=require('./routes/HazardRoute');
+
+const WeatherRoute=require('./routes/WeatherRoute');
 
 
 // app.get("/",(req, res) => {
@@ -44,3 +47,6 @@ app.use("/api/AdministrativeOfficer",AdministrativeOfficerRoutes);
 
 app.use("/api/location",LocationRoute);
 
+app.use("/api/hazard",HazardRoute);
+
+app.use("/api/weather",WeatherRoute);
