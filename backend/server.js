@@ -4,6 +4,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 app.use(express.json());
 const taskRoutes=require('./routes/taskRoute');
+const AdministrativeOfficerRoutes=require('./routes/AdministrativeOfficerRoute');
 // app.get("/",(req, res) => {
 //   res.send("Hello World vino saniyan madu mathgu fsdfsdfsdfsd vino mathu gdfgd fgsdf f");
 // });
@@ -30,3 +31,4 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
 
 // connect route 
 app.use("/api/tasks",taskRoutes);
+app.use("/api/AdministrativeOfficer",AdministrativeOfficerRoutes);

@@ -3,11 +3,11 @@ const { Schema } = mongoose;
 
 const TaskSchema = new Schema(
     {
-        title: {
+        Name: {
             type: String,
             required: true
         },
-        description: {
+        Subjects: {
             type: String,
             required: true
         },
