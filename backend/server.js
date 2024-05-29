@@ -3,8 +3,16 @@ const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
 app.use(express.json());
+
+// declare task name 
 const taskRoutes=require('./routes/taskRoute');
+
 const AdministrativeOfficerRoutes=require('./routes/AdministrativeOfficerRoute');
+
+const LocationRoute=require('./routes/LocationRoute');
+
+
+
 // app.get("/",(req, res) => {
 //   res.send("Hello World vino saniyan madu mathgu fsdfsdfsdfsd vino mathu gdfgd fgsdf f");
 // });
@@ -31,4 +39,8 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
 
 // connect route 
 app.use("/api/tasks",taskRoutes);
+
 app.use("/api/AdministrativeOfficer",AdministrativeOfficerRoutes);
+
+app.use("/api/location",LocationRoute);
+
