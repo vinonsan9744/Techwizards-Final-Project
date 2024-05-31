@@ -8,12 +8,17 @@ app.use(express.json());
 const taskRoutes=require('./routes/taskRoute');
 
 const AdministrativeOfficerRoutes=require('./routes/AdministrativeOfficerRoute');
-
 const LocationRoute=require('./routes/LocationRoute');
+
+const weatherHazardRoute=require('./routes/weatherHazardRoute');
+const locomotivePilotRoute=require('./routes/locomotivePilotRoute');
+const locomotivePilotHazardRoute=require('./routes/locomotivePilotHazardRoute');
+
 
 const HazardRoute=require('./routes/HazardRoute');
 
 const WeatherRoute=require('./routes/WeatherRoute');
+
 
 
 // app.get("/",(req, res) => {
@@ -46,6 +51,10 @@ app.use("/api/tasks",taskRoutes);
 app.use("/api/AdministrativeOfficer",AdministrativeOfficerRoutes);
 
 app.use("/api/location",LocationRoute);
+app.use("/api/weatherHazard",weatherHazardRoute);
+app.use("/api/locomotivePilot",locomotivePilotRoute);
+app.use("/api/locomotivePilotHazard",locomotivePilotHazardRoute);
+
 
 app.use("/api/hazard",HazardRoute);
 
