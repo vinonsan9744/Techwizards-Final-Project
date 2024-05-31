@@ -9,9 +9,16 @@ const taskRoutes=require('./routes/taskRoute');
 
 const AdministrativeOfficerRoutes=require('./routes/AdministrativeOfficerRoute');
 const LocationRoute=require('./routes/LocationRoute');
+
 const weatherHazardRoute=require('./routes/weatherHazardRoute');
 const locomotivePilotRoute=require('./routes/locomotivePilotRoute');
 const locomotivePilotHazardRoute=require('./routes/locomotivePilotHazardRoute');
+
+
+const HazardRoute=require('./routes/HazardRoute');
+
+const WeatherRoute=require('./routes/WeatherRoute');
+
 
 
 // app.get("/",(req, res) => {
@@ -49,3 +56,6 @@ app.use("/api/locomotivePilot",locomotivePilotRoute);
 app.use("/api/locomotivePilotHazard",locomotivePilotHazardRoute);
 
 
+app.use("/api/hazard",HazardRoute);
+
+app.use("/api/weather",WeatherRoute);
