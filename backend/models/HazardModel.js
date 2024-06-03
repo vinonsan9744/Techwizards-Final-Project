@@ -6,7 +6,7 @@ const HazardSchema = new Schema(
         
       
         hazardId: {
-            type: Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         auto: true,
         primary: true
         },
