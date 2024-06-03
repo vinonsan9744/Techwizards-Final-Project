@@ -1,6 +1,19 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const bcrypt = require('bcrypt');
+
+const crypto = require('crypto');
+
+function generatePassword(length = 16) {
+  const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=';
+  let password = '';
+  const bytes = crypto.randomBytes(length);
+  for (let i = 0; i < length; i++) {
+    password += charset[bytes[i] % charset.length];
+  }
+  return password;
+}
+
+
 
 
 const administrativeOfficerSchema = new mongoose.Schema({
@@ -21,26 +34,13 @@ const administrativeOfficerSchema = new mongoose.Schema({
     },
     Password: {
         type: String,
-        required: true
+        require : true
 
     }
+    
 }, { timestamps: true });
 
-// Pre-save hook to hash the password
-administrativeOfficerSchema.pre('save', async function(next) {
-    try {
-        if (this.isNew && !this.Password) {
-            this.Password = generateRandomPassword();
-        }
-        if (this.isModified('Password') || this.isNew) {
-            const salt = await bcrypt.genSalt(10);
-            this.Password = await bcrypt.hash(this.Password, salt);
-        }
-        next();
-    } catch (err) {
-        next(err);
-    }
-});
+
 
 // Function to generate AD_ID before saving
 administrativeOfficerSchema.statics.generateAD_ID = async function() {
