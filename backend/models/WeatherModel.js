@@ -7,7 +7,7 @@ const WeatherSchema = new Schema(
         WeatherID: {
             type: Schema.Types.ObjectId,
             auto: true,
-            primary: true
+            primary: true,
         },
         temperature: {
             type: Number,
