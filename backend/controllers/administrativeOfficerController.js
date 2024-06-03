@@ -24,17 +24,16 @@ const getTasks = async (req,res) => {
 };
 
 // to get singletask -task GET by id
-const getSingleTask = async (req, res) => {
-    const { AD_ID } = req.params;
-
-    try {
-        const singleTask = await administrativeOfficerModel.findOne({ AD_ID });
-        if (!singleTask) {
-            return res.status(404).json({ message: 'Administrative Officer not found' });
-        }
+const getSingleTask = async (req,res) => {
+    const{ id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({message:'administrativeOfficer not found'})
+    }
+    try{
+        const singleTask = await administrativeOfficerModel.findById(id);
         res.status(200).json(singleTask);
-    } catch (e) {
-        res.status(400).json({ error: e.message });
+    } catch (e){
+        res.status(400).json({ error:e.message});
     }
 };
 
