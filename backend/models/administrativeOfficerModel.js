@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 
+
 const administrativeOfficerSchema = new mongoose.Schema({
     AD_ID: {
         type: String,
@@ -21,21 +22,23 @@ const administrativeOfficerSchema = new mongoose.Schema({
     Password: {
         type: String,
         required: true
+
     }
 }, { timestamps: true });
 
 // Pre-save hook to hash the password
 administrativeOfficerSchema.pre('save', async function(next) {
-    if (this.isModified('Password') || this.isNew) {
-        try {
+    try {
+        if (this.isNew && !this.Password) {
+            this.Password = generateRandomPassword();
+        }
+        if (this.isModified('Password') || this.isNew) {
             const salt = await bcrypt.genSalt(10);
             this.Password = await bcrypt.hash(this.Password, salt);
-            next();
-        } catch (err) {
-            next(err);
         }
-    } else {
-        return next();
+        next();
+    } catch (err) {
+        next(err);
     }
 });
 
