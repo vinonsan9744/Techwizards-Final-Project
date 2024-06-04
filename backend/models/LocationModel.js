@@ -14,7 +14,7 @@ const LocationSchema = new Schema(
         locationType: {
             type: String,
             required: true,
-            enum: ['Northern', 'Eastern'] // Adjusted enum values  need to change 
+            // enum: ['Northern', 'Eastern'] // Adjusted enum values  need to change 
         },
         locationContactNumber: {
             type: String,
