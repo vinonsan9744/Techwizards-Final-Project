@@ -25,7 +25,8 @@ const locomotivePilotSchema = new mongoose.Schema({
     },
     locomotiveName: {
         type: String,
-        required: true
+        required: true,
+        unique:true
     },
     
     locomotiveEmail: {
@@ -36,7 +37,8 @@ const locomotivePilotSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: false
+        required: false,
+        unique: true 
 
     },
     locomotivePhoneNo: {
