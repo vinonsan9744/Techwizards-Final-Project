@@ -31,7 +31,8 @@ const administrativeOfficerSchema = new mongoose.Schema({
   },
   Password: {
     type: String,
-    required: false
+    required: false,
+    unique:true 
   }
 }, { timestamps: true });
 

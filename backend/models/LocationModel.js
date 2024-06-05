@@ -9,7 +9,8 @@ const LocationSchema = new Schema(
         },
         locationName: {
             type: String,
-            required: true
+            required: true,
+            unique:true
         },
         locationType: {
             type: String,
@@ -18,7 +19,7 @@ const LocationSchema = new Schema(
         },
         locationContactNumber: {
             type: String,
-            required: true,
+            required: true, //is this need? because some station don't have contact number
             match: [/^\d+$/, 'Phone number must contain only numeric characters'],
             validate: {
                 validator: function(value) {
